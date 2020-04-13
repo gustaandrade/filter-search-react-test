@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 import Checkbox from "../Checkbox";
 
+import useFetch from "../../hooks/fetch";
+
 import "./styles.css";
+import { createSelectOptions } from "../../helpers";
 
 const SearchBox: React.FC = () => {
+  const [brands, setBrands] = useState(null);
+  const brandResult = useFetch(
+    "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Make"
+  );
+  useEffect(() => {
+    setBrands(brandResult);
+  }, [brandResult]);
+
   const customSelectStyle = {
     indicatorSeparator: () => ({
       display: "none",
-    }),
-    container: () => ({
-      margin: "10px 0",
     }),
   };
 
@@ -79,28 +87,30 @@ const SearchBox: React.FC = () => {
         </div>
 
         <div className="right-area">
-          <Select
-            className="brand-select"
-            value={null}
-            options={[]}
-            placeholder={
-              <span>
-                Marca: <strong>Todas</strong>
-              </span>
-            }
-            styles={customSelectStyle}
-          />
-          <Select
-            className="model-select"
-            value={null}
-            options={[]}
-            placeholder={
-              <span>
-                Modelo: <strong>Todos</strong>
-              </span>
-            }
-            styles={customSelectStyle}
-          />
+          <div className="double-area">
+            <Select
+              className="brand-select"
+              value={null}
+              options={createSelectOptions(brands)}
+              placeholder={
+                <span>
+                  Marca: <strong>Todas</strong>
+                </span>
+              }
+              styles={customSelectStyle}
+            />
+            <Select
+              className="model-select"
+              value={null}
+              options={[]}
+              placeholder={
+                <span>
+                  Modelo: <strong>Todos</strong>
+                </span>
+              }
+              styles={customSelectStyle}
+            />
+          </div>
 
           <Select
             className="version-select"
