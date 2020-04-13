@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FaCarSide, FaMotorcycle } from "react-icons/fa";
 
+import Checkbox from "../../components/checkbox";
+
 import Logo from "../../assets/logo.svg";
 
 import "./styles.css";
@@ -64,11 +66,8 @@ const Main: React.FC = () => {
 
         <div className="search-box">
           <div className="checkbox-area">
-            <input type="checkbox" id="new" defaultChecked />
-            <label htmlFor="new">Novos</label>
-
-            <input type="checkbox" id="used" defaultChecked />
-            <label htmlFor="used">Usados</label>
+            <Checkbox label="Novos" defaultChecked />
+            <Checkbox label="Usados" defaultChecked />
           </div>
 
           <div className="input-area">
@@ -91,7 +90,7 @@ const Main: React.FC = () => {
               <select className="version-select" />
 
               <a href="#">Limpar Filtros</a>
-              <button>VER OFERTAS</button>
+              <button className="offers-button">VER OFERTAS</button>
             </div>
           </div>
         </div>

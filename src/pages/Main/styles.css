@@ -1,5 +1,19 @@
 body {
   background-color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+select {
+  height: 40px;
+
+  margin: 5px 0px;
+
+  border: 1px solid #a9a8b0;
+  border-radius: 2px;
 }
 
 .container {
@@ -106,21 +120,14 @@ body {
 
 .input-area {
   display: flex;
+  align-items: baseline;
 }
 
 .checkbox-area {
-  margin: 5px 0 0 5px;
-}
-
-.left-area,
-.right-area {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: row;
 
-  width: 100%;
-
-  margin: 10px;
+  margin: 5px 0 0 5px;
 }
 
 .double-area {
@@ -128,13 +135,16 @@ body {
   width: 100%;
 }
 
-select {
-  height: 40px;
+.left-area,
+.right-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
 
-  margin: 5px 0px;
+  width: 100%;
 
-  border: 1px solid #a9a8b0;
-  border-radius: 2px;
+  margin: 10px;
 }
 
 .city-input {
@@ -154,4 +164,32 @@ select {
 
 .version-select {
   width: 100%;
+}
+
+.left-area a {
+  margin-top: 25px;
+
+  color: #c4242e;
+  font-size: 10pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.right-area a {
+  color: #a9a8b0;
+  font-size: 10pt;
+  text-decoration: none;
+}
+
+.right-area button {
+  margin-top: 15px;
+  padding: 12px 80px;
+
+  background-color: #c4242e;
+
+  border: 0;
+  border-radius: 4px;
+
+  color: #fff;
+  font-weight: bold;
 }
