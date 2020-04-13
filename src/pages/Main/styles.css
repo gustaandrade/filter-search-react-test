@@ -1,0 +1,157 @@
+body {
+  background-color: #f4f4f4;
+}
+
+.container {
+  margin: 0 auto;
+
+  max-width: 933px;
+  max-height: 312px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #f4f4f4;
+}
+
+.header {
+  height: 50px;
+  margin: 20px;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.left-buttons {
+  display: flex;
+}
+
+.left-buttons button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+
+  padding: 10px 20px;
+
+  border: 0;
+  border-bottom: 4px solid #ca242e;
+
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.left-buttons button span:first-child {
+  font-size: 8pt;
+  color: #a9a8b0;
+}
+
+.left-buttons button span:last-child {
+  font-size: 18pt;
+  color: #c4242e;
+}
+
+.left-buttons button.inactive {
+  border: 0;
+  border-bottom: 4px solid #a9a8b0;
+
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.left-buttons button.inactive span:first-child {
+  font-size: 8pt;
+  color: #a9a8b0;
+}
+
+.left-buttons button.inactive span:last-child {
+  font-size: 18pt;
+  color: #a9a8b0;
+}
+
+.tab-button-text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  margin-left: 20px;
+}
+
+.right-buttons {
+  margin: 10px;
+}
+
+.right-buttons button {
+  padding: 10px 35px;
+
+  background-color: transparent;
+
+  color: #f0c88b;
+  font-size: 11pt;
+  font-weight: bold;
+
+  border: 2px solid #f0c88b;
+  border-radius: 5px;
+}
+
+.search-box {
+  background-color: #fff;
+
+  padding: 20px 50px;
+}
+
+.input-area {
+  display: flex;
+}
+
+.checkbox-area {
+  margin: 5px 0 0 5px;
+}
+
+.left-area,
+.right-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin: 10px;
+}
+
+.double-area {
+  display: flex;
+  width: 100%;
+}
+
+select {
+  height: 40px;
+
+  margin: 5px 0px;
+
+  border: 1px solid #a9a8b0;
+  border-radius: 2px;
+}
+
+.city-input {
+  width: 65%;
+}
+
+.distance-select {
+  width: 35%;
+}
+
+.year-select,
+.price-select,
+.brand-select,
+.model-select {
+  width: 48%;
+}
+
+.version-select {
+  width: 100%;
+}
