@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaCarSide, FaMotorcycle } from "react-icons/fa";
+import { FaCarSide, FaMotorcycle, FaMapMarkerAlt } from "react-icons/fa";
+import Select from "react-select";
 
 import Checkbox from "../../components/checkbox";
 
@@ -19,6 +20,15 @@ const Main: React.FC = () => {
   const onMotorcycleButtonClicked = () => {
     setMotorcycleActive(true);
     setCarActive(false);
+  };
+
+  const customSelectStyle = {
+    indicatorSeparator: () => ({
+      display: "none",
+    }),
+    container: () => ({
+      margin: "10px 0",
+    }),
   };
 
   return (
@@ -73,21 +83,93 @@ const Main: React.FC = () => {
           <div className="input-area">
             <div className="left-area">
               <div className="double-area">
-                <select className="city-input" />
-                <select className="distance-select" />
+                <Select
+                  className="city-input"
+                  value={null}
+                  options={[]}
+                  placeholder={
+                    <span>
+                      <FaMapMarkerAlt
+                        size={14}
+                        color="#C4242E"
+                        style={{
+                          paddingRight: "10px",
+                        }}
+                      />
+                      Onde: <strong>São Paulo - SP</strong>
+                    </span>
+                  }
+                  isSearchable
+                  isClearable
+                  styles={customSelectStyle}
+                />
+
+                <Select
+                  className="distance-select"
+                  value={null}
+                  options={[]}
+                  placeholder={
+                    <span>
+                      Raio: <strong>100km</strong>
+                    </span>
+                  }
+                  styles={customSelectStyle}
+                />
               </div>
 
-              <select className="year-select" />
-              <select className="price-select" />
+              <Select
+                className="year-select"
+                value={null}
+                options={[]}
+                placeholder="Ano Desejado"
+                styles={customSelectStyle}
+              />
+              <Select
+                className="price-select"
+                value={null}
+                options={[]}
+                placeholder="Faixa de Preço"
+                styles={customSelectStyle}
+              />
 
               <a href="#">> Busca Avançada</a>
             </div>
 
             <div className="right-area">
-              <select className="brand-select" />
-              <select className="model-select" />
+              <Select
+                className="brand-select"
+                value={null}
+                options={[]}
+                placeholder={
+                  <span>
+                    Marca: <strong>Todas</strong>
+                  </span>
+                }
+                styles={customSelectStyle}
+              />
+              <Select
+                className="model-select"
+                value={null}
+                options={[]}
+                placeholder={
+                  <span>
+                    Modelo: <strong>Todos</strong>
+                  </span>
+                }
+                styles={customSelectStyle}
+              />
 
-              <select className="version-select" />
+              <Select
+                className="version-select"
+                value={null}
+                options={[]}
+                placeholder={
+                  <span>
+                    Versão: <strong>Todas</strong>
+                  </span>
+                }
+                styles={customSelectStyle}
+              />
 
               <a href="#">Limpar Filtros</a>
               <button className="offers-button">VER OFERTAS</button>
