@@ -1,0 +1,81 @@
+.search-box {
+  background-color: #fff;
+
+  padding: 20px 50px;
+}
+
+.input-area {
+  display: flex;
+  align-items: baseline;
+}
+
+.checkbox-area {
+  display: flex;
+  flex-direction: row;
+
+  margin: 5px 0 0 12px;
+}
+
+.double-area {
+  display: flex;
+  width: 100%;
+}
+
+.left-area,
+.right-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+
+  width: 100%;
+
+  margin: 10px;
+}
+
+.city-input {
+  width: 65%;
+}
+
+.distance-select {
+  width: 35%;
+}
+
+.year-select,
+.price-select,
+.brand-select,
+.model-select {
+  width: 48%;
+}
+
+.version-select {
+  width: 100%;
+}
+
+.left-area a {
+  margin-top: 25px;
+
+  color: #c4242e;
+  font-size: 10pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.right-area a {
+  color: #a9a8b0;
+  font-size: 10pt;
+  text-decoration: none;
+}
+
+.right-area button {
+  margin-top: 15px;
+  padding: 12px 80px;
+
+  background-color: #c4242e;
+
+  border: 0;
+  border-radius: 4px;
+
+  color: #fff;
+  font-weight: bold;
+}

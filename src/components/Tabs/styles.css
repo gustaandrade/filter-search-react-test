@@ -1,0 +1,78 @@
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.left-buttons {
+  display: flex;
+}
+
+.left-buttons button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+
+  padding: 10px 20px;
+
+  border: 0;
+  border-bottom: 4px solid #ca242e;
+
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.left-buttons button span:first-child {
+  font-size: 8pt;
+  color: #a9a8b0;
+}
+
+.left-buttons button span:last-child {
+  font-size: 18pt;
+  color: #c4242e;
+}
+
+.left-buttons button.inactive {
+  border: 0;
+  border-bottom: 4px solid #a9a8b0;
+
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.left-buttons button.inactive span:first-child {
+  font-size: 8pt;
+  color: #a9a8b0;
+}
+
+.left-buttons button.inactive span:last-child {
+  font-size: 18pt;
+  color: #a9a8b0;
+}
+
+.tab-button-text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  margin-left: 20px;
+}
+
+.right-buttons {
+  margin: 10px;
+}
+
+.right-buttons button {
+  padding: 10px 35px;
+
+  background-color: transparent;
+
+  color: #f0c88b;
+  font-size: 11pt;
+  font-weight: bold;
+
+  border: 2px solid #f0c88b;
+  border-radius: 5px;
+}
