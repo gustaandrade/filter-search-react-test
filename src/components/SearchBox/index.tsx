@@ -70,7 +70,19 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
   };
 
   const searchOffers = () => {
-    props.setVehicles(vehiclesResult!);
+    props.setVehicles([]);
+
+    props.setVehicles(
+      vehiclesResult!.filter(
+        (v) =>
+          v.YearFab === chooseYear?.value ||
+          v.YearModel === chooseYear?.value ||
+          parseInt(v.Price, 10) <= choosePrice?.value ||
+          v.Make === chooseBrand?.label ||
+          v.Model === chooseModel?.label ||
+          v.Version === chooseVersion?.label
+      )
+    );
   };
 
   const customSelectStyle = {

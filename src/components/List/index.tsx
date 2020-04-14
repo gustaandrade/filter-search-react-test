@@ -10,18 +10,50 @@ const List: React.FC<ListProps> = (props) => {
   return (
     <div className="list">
       {props.vehicles.map((v) => (
-        <>
-          <span className="vehicle-id">{v.ID}</span>
-          <span className="vehicle-make">{v.Make}</span>
-          <span className="vehicle-model">{v.Model}</span>
-          <span className="vehicle-version">{v.Version}</span>
-          <img className="vehicle-image" src={v.Image} alt={v.Version} />
-          <span className="vehicle-km">{v.KM}</span>
-          <span className="vehicle-price">{v.Price}</span>
-          <span className="vehicle-year-model">{v.YearModel}</span>
-          <span className="vehicle-year-fab">{v.YearFab}</span>
-          <span className="vehicle-color">{v.Color}</span>
-        </>
+        <div className="vehicle">
+          <div className="vehicle-img">
+            <img className="vehicle-image" src={v.Image} alt={v.Version} />
+          </div>
+
+          <div className="vehicle-data">
+            <span className="vehicle-id">
+              <strong>ID: </strong>
+              {v.ID}
+            </span>
+            <span className="vehicle-make">
+              <strong>Make: </strong>
+              {v.Make}
+            </span>
+            <span className="vehicle-model">
+              <strong>Model: </strong>
+              {v.Model}
+            </span>
+            <span className="vehicle-version">
+              <strong>Version: </strong>
+              {v.Version}
+            </span>
+            <span className="vehicle-km">
+              <strong>KM: </strong>
+              {v.KM}
+            </span>
+            <span className="vehicle-price">
+              <strong>Price: </strong>
+              {v.Price}
+            </span>
+            <span className="vehicle-year-model">
+              <strong>YearModel: </strong>
+              {v.YearModel}
+            </span>
+            <span className="vehicle-year-fab">
+              <strong>YearFab: </strong>
+              {v.YearFab}
+            </span>
+            <span className="vehicle-color">
+              <strong>Color: </strong>
+              {v.Color}
+            </span>
+          </div>
+        </div>
       ))}
     </div>
   );
