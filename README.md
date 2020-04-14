@@ -12,4 +12,4 @@ Para rodar o projeto em modo de desenvolvimento, basta executar o comando `yarn 
 
 ## Licença
 
-MIT.
+[MIT](./LICENSE).
