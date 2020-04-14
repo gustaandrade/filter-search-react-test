@@ -6,9 +6,9 @@ import Store from "./stores/store";
 
 function App() {
   return (
-    // <Provider store={Store}>
-    <Main />
-    // </Provider>
+    <Provider store={Store}>
+      <Main />
+    </Provider>
   );
 }
 

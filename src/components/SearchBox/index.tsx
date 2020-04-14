@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import Select from "react-select";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import useFetch from "../../hooks/fetch";
 
 import Checkbox from "../Checkbox";
 
-import { createSelectOptions } from "../../helpers";
+import {
+  createSelectOptions,
+  placeSelectArray,
+  yearSelectArray,
+  priceSelectArray,
+  distanceSelectArray,
+} from "../../helpers";
 
 import "./styles.css";
+import { StoreActions } from "../../stores/actions/types";
+import { setVehicles } from "../../stores/actions";
 
-const SearchBox: React.FC = () => {
+import { Vehicle } from "../../types";
+import { SearchBoxProps } from "../types";
+
+const SearchBox: React.FC<SearchBoxProps> = (props) => {
   const [brands, setBrands] = useState(null);
   const [models, setModels] = useState(null);
   const [versions, setVersions] = useState(null);
+
+  const [choosePlace, setChoosePlace] = useState<any>(null);
+  const [chooseDistance, setChooseDistance] = useState<any>(null);
+  const [chooseYear, setChooseYear] = useState<any>(null);
+  const [choosePrice, setChoosePrice] = useState<any>(null);
 
   const [chooseBrand, setChooseBrand] = useState<any>(null);
   const [chooseModel, setChooseModel] = useState<any>(null);
@@ -31,12 +48,30 @@ const SearchBox: React.FC = () => {
       chooseModel ? chooseModel.value : 0
     }`
   );
+  const vehiclesResult: Vehicle[] | null = useFetch(
+    `http://desafioonline.webmotors.com.br/api/OnlineChallenge/Vehicles?Page=1`
+  );
 
   useEffect(() => {
     setBrands(brandResult);
     setModels(modelResult);
     setVersions(versionResult);
   }, [brandResult, modelResult, versionResult]);
+
+  const clearAllFilters = () => {
+    setChoosePlace(null);
+    setChooseDistance(null);
+    setChooseYear(null);
+    setChoosePrice(null);
+
+    setChooseBrand(null);
+    setChooseModel(null);
+    setChooseVersion(null);
+  };
+
+  const searchOffers = () => {
+    props.setVehicles(vehiclesResult!);
+  };
 
   const customSelectStyle = {
     indicatorSeparator: () => ({
@@ -61,8 +96,8 @@ const SearchBox: React.FC = () => {
           <div className="double-area">
             <Select
               className="city-input"
-              value={null}
-              options={[]}
+              value={choosePlace}
+              options={placeSelectArray}
               placeholder={
                 <span>
                   <FaMapMarkerAlt
@@ -77,34 +112,40 @@ const SearchBox: React.FC = () => {
               }
               isSearchable
               isClearable
+              onChange={(choosePlace) => setChoosePlace(choosePlace)}
               styles={customSelectStyle}
             />
 
             <Select
               className="distance-select"
-              value={null}
-              options={[]}
+              value={chooseDistance}
+              options={distanceSelectArray}
               placeholder={
                 <span>
                   Raio: <strong>100km</strong>
                 </span>
               }
+              isSearchable
+              isClearable
+              onChange={(chooseDistance) => setChooseDistance(chooseDistance)}
               styles={customSelectStyle}
             />
           </div>
 
           <Select
             className="year-select"
-            value={null}
-            options={[]}
+            value={chooseYear}
+            options={yearSelectArray}
             placeholder="Ano Desejado"
+            onChange={(chooseYear) => setChooseYear(chooseYear)}
             styles={customSelectStyle}
           />
           <Select
             className="price-select"
-            value={null}
-            options={[]}
+            value={choosePrice}
+            options={priceSelectArray}
             placeholder="Faixa de Preço"
+            onChange={(choosePrice) => setChoosePrice(choosePrice)}
             styles={customSelectStyle}
           />
 
@@ -152,12 +193,20 @@ const SearchBox: React.FC = () => {
             styles={customSelectStyle}
           />
 
-          <a href="#">Limpar Filtros</a>
-          <button className="offers-button">VER OFERTAS</button>
+          <a href="" onClick={() => clearAllFilters()}>
+            Limpar Filtros
+          </a>
+          <button className="offers-button" onClick={() => searchOffers()}>
+            VER OFERTAS
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default SearchBox;
+const mapDispatchToProps = (dispatch: (dispatch: StoreActions) => void) => ({
+  setVehicles: (vehicles: Vehicle[]) => dispatch(setVehicles(vehicles)),
+});
+
+export default connect(null, mapDispatchToProps)(SearchBox);

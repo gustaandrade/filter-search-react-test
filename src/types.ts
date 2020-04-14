@@ -11,12 +11,12 @@ export interface Model {
 
 export interface Version {
   ModelID: number;
-  Id: number;
+  ID: number;
   Name: string;
 }
 
 export interface Vehicle {
-  Id: number;
+  ID: number;
   Make: string;
   Model: string;
   Version: string;
