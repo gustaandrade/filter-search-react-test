@@ -1,4 +1,4 @@
-import { Brand, SelectOption } from "../types";
+import { SelectOption } from "../types";
 
 export const createSelectOptions = (items: any) => {
   if (!items) return [];
@@ -6,7 +6,7 @@ export const createSelectOptions = (items: any) => {
   const optionToExport: SelectOption[] = [];
 
   items.forEach((it: any) =>
-    optionToExport.push({ label: it.name, value: it.id })
+    optionToExport.push({ label: it.Name, value: it.ID })
   );
 
   return optionToExport;

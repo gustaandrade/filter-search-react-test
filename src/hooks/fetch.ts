@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 
 const useFetch = (url: string, options?: RequestInit) => {
-  const [response, setResponse] = useState(null);
+  const [res, setRes] = useState(null);
 
   useEffect(() => {
-    const doFetch = async () => {
+    const fetchURL = async () => {
       const res = await fetch(url, options);
       const json = await res.json();
-      setResponse(json);
+      setRes(json);
     };
 
-    doFetch();
+    fetchURL();
   }, [options, url]);
 
-  return response;
+  return res;
 };
 
 export default useFetch;

@@ -1,26 +1,51 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import useFetch from "../../hooks/fetch";
 
 import Checkbox from "../Checkbox";
 
-import useFetch from "../../hooks/fetch";
+import { createSelectOptions } from "../../helpers";
 
 import "./styles.css";
-import { createSelectOptions } from "../../helpers";
 
 const SearchBox: React.FC = () => {
   const [brands, setBrands] = useState(null);
+  const [models, setModels] = useState(null);
+  const [versions, setVersions] = useState(null);
+
+  const [chooseBrand, setChooseBrand] = useState<any>(null);
+  const [chooseModel, setChooseModel] = useState<any>(null);
+  const [chooseVersion, setChooseVersion] = useState<any>(null);
+
   const brandResult = useFetch(
     "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Make"
   );
+  const modelResult = useFetch(
+    `http://desafioonline.webmotors.com.br/api/OnlineChallenge/Model?MakeID=${
+      chooseBrand ? chooseBrand.value : 0
+    }`
+  );
+  const versionResult = useFetch(
+    `http://desafioonline.webmotors.com.br/api/OnlineChallenge/Version?ModelID=${
+      chooseModel ? chooseModel.value : 0
+    }`
+  );
+
   useEffect(() => {
     setBrands(brandResult);
-  }, [brandResult]);
+    setModels(modelResult);
+    setVersions(versionResult);
+  }, [brandResult, modelResult, versionResult]);
 
   const customSelectStyle = {
     indicatorSeparator: () => ({
       display: "none",
+    }),
+    option: (provided: any) => ({
+      ...provided,
+      backgroundColor: "#fff",
+      color: "#000",
     }),
   };
 
@@ -90,37 +115,40 @@ const SearchBox: React.FC = () => {
           <div className="double-area">
             <Select
               className="brand-select"
-              value={null}
+              value={chooseBrand}
               options={createSelectOptions(brands)}
               placeholder={
                 <span>
                   Marca: <strong>Todas</strong>
                 </span>
               }
+              onChange={(chooseBrand) => setChooseBrand(chooseBrand)}
               styles={customSelectStyle}
             />
             <Select
               className="model-select"
-              value={null}
-              options={[]}
+              value={chooseModel}
+              options={createSelectOptions(models)}
               placeholder={
                 <span>
                   Modelo: <strong>Todos</strong>
                 </span>
               }
+              onChange={(chooseModel) => setChooseModel(chooseModel)}
               styles={customSelectStyle}
             />
           </div>
 
           <Select
             className="version-select"
-            value={null}
-            options={[]}
+            value={chooseVersion}
+            options={createSelectOptions(versions)}
             placeholder={
               <span>
                 Versão: <strong>Todas</strong>
               </span>
             }
+            onChange={(chooseVersion) => setChooseVersion(chooseVersion)}
             styles={customSelectStyle}
           />
 

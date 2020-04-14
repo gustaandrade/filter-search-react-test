@@ -1,30 +1,31 @@
 export interface Brand {
-  id: number;
-  name: string;
+  ID: number;
+  Name: string;
 }
 
 export interface Model {
-  makeId: number;
-  id: number;
+  MakeID: number;
+  ID: number;
+  Name: string;
 }
 
 export interface Version {
-  modelId: number;
-  id: number;
-  name: string;
+  ModelID: number;
+  Id: number;
+  Name: string;
 }
 
 export interface Vehicle {
-  id: number;
-  make: string;
-  model: string;
-  version: string;
-  image: string;
-  km: number;
-  price: string;
-  yearModel: number;
-  yeatFab: number;
-  color: string;
+  Id: number;
+  Make: string;
+  Model: string;
+  Version: string;
+  Image: string;
+  KM: number;
+  Price: string;
+  YearModel: number;
+  YearFab: number;
+  Color: string;
 }
 
 export interface SelectOption {
