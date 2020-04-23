@@ -1,6 +1,6 @@
-# webmotors-react-test
+# filter-search-react-test
 
-Repositório criado para armazenar o código do repositório teste de recriação e simulação da página inicial da Webmotors.
+Repositório criado para armazenar o código do repositório teste de recriação e simulação da página inicial de uma aplicação que busca e filtra carros de uma API.
 
 ![Example Image](./src/assets/example.png)
 
